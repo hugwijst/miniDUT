@@ -15,7 +15,7 @@
 
 #include <avr/io.h>
 
-void init_motors(void) {
+void motors_init(void) {
     // Disable JTAG, as PC2-5 are otherwise not usable
     MCUCSR |= 1 << JTD;
     MCUCSR |= 1 << JTD;
@@ -35,7 +35,7 @@ void init_motors(void) {
  * @param num The motor to set the state of, between 0 and 3.
  * @param state The new state of the motor.
  */
-void set_motor_state(int num, MotorState state) {
+void motor_set_state(int num, MotorState state) {
     // Disable both pins
     PORTC &= ~(0x3 << (num * 2));
 

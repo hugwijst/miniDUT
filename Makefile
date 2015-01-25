@@ -8,7 +8,7 @@
 MCU = atmega32
 FORMAT = ihex
 TARGET = main
-SRC = $(TARGET).c motors.c lcd.c
+SRC = $(TARGET).c lcd.c motors.c tsal.c
 ASRC = 
 OPT = s
 

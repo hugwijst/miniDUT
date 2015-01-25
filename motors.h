@@ -7,7 +7,7 @@ typedef enum {
     MS_BACKWARD,
 } MotorState;
 
-void init_motors(void);
-void set_motor_state(int num, MotorState state);
+void motors_init(void);
+void motor_set_state(int num, MotorState state);
 
 #endif
