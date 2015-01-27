@@ -1,10 +1,23 @@
+/**
+ * TSAL driver.
+ *
+ * The tsal is connected to pin A4?
+ */
 #include "tsal.h"
+
+#include <stdbool.h>
 
 #include <avr/io.h>
 
 #include "timer.h"
 
+#define PIN_NUM 4
+
 bool _is_tsal_on = false;
+
+void tsal_init(void) {
+    DDRA |= (1 << PIN_NUM);
+}
 
 void tsal_on(void) {
     _is_tsal_on = true;
@@ -15,11 +28,11 @@ void tsal_off(void) {
 }
 
 void tsal_run(void) {
-    if(_is_tsal_on && (get_time() / 200) % 2 == 0) {
+    if(_is_tsal_on && (time_ms() / 200) % 2 == 0) {
         // enable TSAL LED
-        PORTD |= 0x1;
+        PORTA |= (1 << PIN_NUM);
     } else {
         // disable TSAL LED
-        PORTD &= ~0x1;
+        PORTA &= ~(1 << PIN_NUM);
     }
 }

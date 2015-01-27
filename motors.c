@@ -22,7 +22,7 @@ void motors_init(void) {
 
     // Make sure we don't drive any of the motors
     for(int i = 0; i < 4; i++) {
-        set_motor_state(i, MS_OFF);
+        motor_set_state(i, MS_OFF);
     }
 
     // Configure the motor pins as output I/O

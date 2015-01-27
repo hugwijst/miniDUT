@@ -3,7 +3,7 @@
 
 #include <avr/io.h>
 
-void timer_init(void) {
+inline void timer_init(void) {
     // Set the prescaler to TotalFrequency / 1024.
     // This will give an increment approximately every 1ms.
     TCCR1B |= 1 << CS12 | 1 << CS10;

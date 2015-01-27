@@ -71,6 +71,11 @@ void lcd_send_cmd(LcdCommand cmd) {
     MrLCDsCrib = 0;
 }
 
+void lcd_set_location(uint8_t x, uint8_t y) {
+    // Set cursor to (x,y)
+    lcd_send_cmd(0x80 + 64*y + x);
+}
+
 void lcd_send_char(unsigned char ch) {
     lcd_available();
     MrLCDsCrib = ch;
@@ -78,4 +83,10 @@ void lcd_send_char(unsigned char ch) {
     MrLCDsControl |= 1<<BiPolarMood;
     Peek_A_Boo();
     MrLCDsCrib = 0;
+}
+
+void lcd_send_string(const char *str) {
+    while (*str != 0) {
+        lcd_send_char(*str++);
+    }
 }
