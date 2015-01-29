@@ -11,12 +11,12 @@
 
 #include "timer.h"
 
-#define PIN_NUM 4
+#define PIN_NUM PINA4
 
 bool _is_tsal_on = false;
 
 void tsal_init(void) {
-    DDRA |= (1 << PIN_NUM);
+    DDRA |= (1 << PINA4);
 }
 
 void tsal_on(void) {
@@ -30,9 +30,9 @@ void tsal_off(void) {
 void tsal_run(void) {
     if(_is_tsal_on && (time_ms() / 200) % 2 == 0) {
         // enable TSAL LED
-        PORTA |= (1 << PIN_NUM);
+        PORTA |= (1 << PINA4);
     } else {
         // disable TSAL LED
-        PORTA &= ~(1 << PIN_NUM);
+        PORTA &= ~(1 << PINA4);
     }
 }

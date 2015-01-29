@@ -5,12 +5,12 @@
  *  Author: Lukas
  */ 
 
+#include "lcd.h"
+
 #define F_CPU 1000000UL
 
 #include <avr/io.h>
 #include <util/delay.h>
-
-#include "lcd.h"
 
 // PIN definitions
 #define MrLCDsCrib 				PORTB 		// Set where the LCD is connected
@@ -83,6 +83,12 @@ void lcd_send_char(unsigned char ch) {
     MrLCDsControl |= 1<<BiPolarMood;
     Peek_A_Boo();
     MrLCDsCrib = 0;
+}
+
+void lcd_send_chars(const char *chs, size_t len) {
+    while(len--) {
+        lcd_send_char(*chs++);
+    }
 }
 
 void lcd_send_string(const char *str) {

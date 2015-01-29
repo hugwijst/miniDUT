@@ -11,9 +11,13 @@
 
 #include <stdint.h>
 
+void btn_init(uint8_t port,
+        uint8_t portBit);
+
+char gpio_val(uint8_t port, uint8_t portBit);
+
 char btn_pressed(int buttonNumber,
         unsigned char port,
-        unsigned char portBit,
-        uint16_t debounceTime);
+        unsigned char portBit);
 
 #endif
