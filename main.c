@@ -195,6 +195,7 @@ int main(void) {
 
     for(;;) {
         // run the TSAL logic every iteration
+        motors_run();
         tsal_run();
         display_run();
         display_run2();

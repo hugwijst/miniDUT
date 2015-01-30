@@ -8,6 +8,7 @@ typedef enum {
 } MotorState;
 
 void motors_init(void);
+void motors_run(void);
 void motor_set_state(int num, MotorState state);
 
 #endif
